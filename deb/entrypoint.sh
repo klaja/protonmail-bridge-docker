@@ -5,31 +5,16 @@ set -ex
 # Initialize
 if [[ $1 == init ]]; then
 
-    # # Parse parameters
-    # TFP=""  # Default empty two factor passcode
-    # shift  # skip `init`
-    # while [[ $# -gt 0 ]]; do
-    #     key="$1"
-    #     case $key in
-    #         -u|--username)
-    #         USERNAME="$2"
-    #         ;;
-    #         -p|--password)
-    #         PASSWORD="$2"
-    #         ;;
-    #         -t|--twofactor)
-    #         TWOFACTOR="$2"
-    #         ;;
-    #     esac
-    #     shift
-    #     shift
-    # done
-
     # Initialize pass
     gpg --generate-key --batch /protonmail/gpgparams
     pass init pass-key
 
     # Login
+    protonmail-bridge --cli
+
+# Interactive CLI only (skip pass initialization)
+elif [[ $1 == interactive ]]; then
+
     protonmail-bridge --cli
 
 else
