@@ -33,6 +33,7 @@ RUN apt-get update \
         socat \
         pass \
         libsecret-1-0 \
+        libfido2-1 \
         ca-certificates \
         procps \
     && rm -rf /var/lib/apt/lists/*
